@@ -1,11 +1,11 @@
 function calculate(){
 
-    let s1 = Number(document.getElementById("sub1").value);
-    let s2 = Number(document.getElementById("sub2").value);
-    let s3 = Number(document.getElementById("sub3").value);
-    let s4 = Number(document.getElementById("sub4").value);
-    let s5 = Number(document.getElementById("sub5").value);
-    
+    let s1 = Number(document.getElementById("Maths").value);
+    let s2 = Number(document.getElementById("Science").value);
+    let s3 = Number(document.getElementById("English").value);
+    let s4 = Number(document.getElementById("Computer").value);
+    let s5 = Number(document.getElementById("History").value);
+
     let total = s1 + s2 + s3 + s4 + s5;
     let average = total / 5;
 
