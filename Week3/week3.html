@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Simple Demo</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    #card {
+      border: 2px solid black;
+      padding: 15px;
+      width: 300px;
+      margin-bottom: 10px;
+    }
+
+    img {
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+
+    .highlight {
+      color: blue;
+      font-weight: bold;
+    }
+
+    .dark {
+      background: black;
+      color: white;
+    }
+
+    .round {
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Simple jQuery Profile</h2>
+
+<div id="card">
+  <img id="photo" src="image.png">
+
+  <h3 id="name">Diya Khatri</h3>
+
+  <p id="bio">HI! I am an IT student learning jQuery and many other programming languages.</p>
+
+  <ul id="skills">
+    <li>JavaScript</li>
+    <li>jQuery</li>
+    <li>python</li>
+    <li>C++</li>
+  </ul>
+
+  <input type="text" id="input" placeholder="Enter nickname">
+</div>
+
+<p id="output">Output here...</p>
+
+<hr>
+
+<h3>1. Get & Set</h3>
+<button id="showName">Show Name</button>
+<button id="changeName">Change Name</button>
+<button id="showBio">Show Bio</button>
+<button id="getInput">Get Input</button>
+<button id="setInput">Set Input</button>
+
+<br>
+
+<h3>2. CSS Class </h3>
+<button id="addClass">Add Highlight</button>
+<button id="removeClass">Remove Highlight</button>
+<button id="darkMode">Toggle Dark</button>
+<button id="roundImg">Round Image</button>
+
+<br>
+
+<h3>3. CSS Method</h3>
+<button id="redBg">Red Background</button>
+<button id="resetBg">Reset Background</button>
+
+<br>
+
+<h3>4. Hide and Show</h3>
+<button id="hide">Hide Photo</button>
+<button id="show">Show Photo</button>
+<button id="toggleBio">Toggle Bio</button>
+
+<br>
+
+<h3>5. Fade </h3>
+<button id="fadeOut">Fade Out</button>
+<button id="fadeIn">Fade In</button>
+<button id="fadeHalf">Fade 50%</button>
+
+<br>
+
+<h3>6. Slide</h3>
+<button id="slideUp">Slide Up</button>
+<button id="slideDown">Slide Down</button>
+<button id="slideToggle">Slide Toggle</button>
+
+<br>
+
+<h3>7. Animate</h3>
+<button id="animate">Animate</button>
+
+<script>
+$(document).ready(function(){
+
+  // GET and SET
+  $("#showName").click(function(){
+    $("#output").text($("#name").text());
+  });
+
+  $("#changeName").click(function(){
+    $("#name").text("Diya Khatri");
+  });
+
+  $("#showBio").click(function(){
+    $("#output").text($("#bio").text());
+  });
+
+  $("#getInput").click(function(){
+    $("#output").text($("#input").val());
+  });
+
+  $("#setInput").click(function(){
+    $("#input").val("jQuery Pro");
+  });
+
+  // CSS CLASS
+  $("#addClass").click(function(){
+    $("#name, #bio, li").addClass("highlight");
+  });
+
+  $("#removeClass").click(function(){
+    $("#name, #bio, li").removeClass("highlight");
+  });
+
+  $("#darkMode").click(function(){
+    $("#card").toggleClass("dark");
+  });
+
+  $("#roundImg").click(function(){
+    $("#photo").toggleClass("round");
+  });
+
+  // CSS Method
+  $("#redBg").click(function(){
+    $("#card").css("background", "red");
+  });
+
+  $("#resetBg").click(function(){
+    $("#card").css("background", "white");
+  });
+
+  // HIDE and SHOW
+  $("#hide").click(function(){
+    $("#photo").hide();
+  });
+
+  $("#show").click(function(){
+    $("#photo").show();
+  });
+
+  $("#toggleBio").click(function(){
+    $("#bio").toggle();
+  });
+
+  // FADE
+  $("#fadeOut").click(function(){
+    $("#card").fadeOut();
+  });
+
+  $("#fadeIn").click(function(){
+    $("#card").fadeIn();
+  });
+
+  $("#fadeHalf").click(function(){
+    $("#card").fadeTo("slow", 0.5);
+  });
+
+  // SLIDE
+  $("#slideUp").click(function(){
+    $("#skills").slideUp();
+  });
+
+  $("#slideDown").click(function(){
+    $("#skills").slideDown();
+  });
+
+  $("#slideToggle").click(function(){
+    $("#skills").slideToggle();
+  });
+
+  // ANIMATE
+  $("#animate").click(function(){
+    $("#card").animate({marginLeft: "100px"});
+  });
+
+  // EVENTS
+  $("#photo").hover(function(){
+    $(this).css("box-shadow", "0 0 10px gray");
+  }, function(){
+    $(this).css("box-shadow", "none");
+  });
+
+  $("#input").keyup(function(e){
+    $("#output").text("Key: " + e.key);
+  });
+
+});
+</script>
+
+</body>
+</html>
