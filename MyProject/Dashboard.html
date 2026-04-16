@@ -3,31 +3,79 @@
 <head>
   <title>TaxTrack Dashboard</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <style>
     body {
-      font-family: Arial;
-      background: #f2f2f2;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
       display: flex;
       justify-content: center;
-      padding: 20px;
+      align-items: center;
+      height: 100vh;
     }
 
+    /* Mobile Frame */
+    .phone-frame {
+      width: 380px;
+      height: 750px;
+      background: black;
+      border-radius: 40px;
+      padding: 10px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    /* Screen */
     #phone {
-      width: 320px;
+      width: 100%;
+      height: 100%;
       background: white;
-      border-radius: 25px;
-      padding: 20px;
-      box-shadow: 0 0 10px gray;
+      border-radius: 30px;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    /* Notch */
+    .notch {
+      width: 150px;
+      height: 25px;
+      background: black;
+      border-radius: 15px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .back {
+      position: absolute;
+      left: 0;
+      font-size: 20px;
+      cursor: pointer;
     }
 
     h2 {
-      text-align: center;
+      font-size: 18px;
+      margin: 0;
     }
 
     .hello {
-      color: gray;
+      color: #777;
+      margin-top: 10px;
     }
 
     .section-title {
@@ -36,9 +84,10 @@
       font-weight: bold;
     }
 
+    /* Items */
     .item {
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -55,80 +104,99 @@
 
     .due {
       font-size: 12px;
-      color: gray;
+      color: #999;
     }
 
-    button {
-      width: 100%;
-      margin-top: 15px;
-      padding: 10px;
-      background: lightblue;
-      border: none;
-      cursor: pointer;
-    }
-
+    /* Highlight */
     .highlight {
       background: #e6f7ff;
+    }
+
+    /* Button */
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: #aee1f9;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-<div id="phone">
+<div class="phone-frame">
 
-  <h2>TaxTrack Dashboard</h2>
+  <!-- Notch -->
+  <div class="notch"></div>
 
-  <p class="hello">Hello, Diya 👋</p>
+  <!-- Screen -->
+  <div id="phone">
 
-  <div class="section-title">Upcoming Tax Deadlines</div>
-
-  <div class="item">
-    <div class="left">
-      <input type="checkbox" class="check">
-      <div>
-        <div>Vehicle Tax</div>
-        <div class="due">Due: March 19</div>
-      </div>
+    <!-- Header -->
+    <div class="header">
+      <span class="back">←</span>
+      <h2>TaxTrack Dashboard</h2>
     </div>
-    <div>Car BA</div>
-  </div>
 
-  <div class="item">
-    <div class="left">
-      <input type="checkbox" class="check">
-      <div>
-        <div>Property Tax</div>
-        <div class="due">Due: May 15</div>
+    <!-- Greeting -->
+    <p class="hello">Hello, Diya 👋</p>
+
+    <!-- Section -->
+    <div class="section-title">Upcoming Tax Deadlines</div>
+
+    <!-- Item 1 -->
+    <div class="item">
+      <div class="left">
+        <input type="checkbox" class="check">
+        <div>
+          <div>Vehicle Tax</div>
+          <div class="due">Due: March 19</div>
+        </div>
       </div>
+      <div>Car BA</div>
     </div>
-    <div>House</div>
-  </div>
 
-  <div class="item">
-    <div class="left">
-      <input type="checkbox" class="check">
-      <div>
-        <div>Estate Tax</div>
-        <div class="due">Due: June 21</div>
+    <!-- Item 2 -->
+    <div class="item">
+      <div class="left">
+        <input type="checkbox" class="check">
+        <div>
+          <div>Property Tax</div>
+          <div class="due">Due: May 15</div>
+        </div>
       </div>
+      <div>House</div>
     </div>
-    <div>Land</div>
+
+    <!-- Item 3 -->
+    <div class="item">
+      <div class="left">
+        <input type="checkbox" class="check">
+        <div>
+          <div>Estate Tax</div>
+          <div class="due">Due: June 21</div>
+        </div>
+      </div>
+      <div>Land</div>
+    </div>
+
+    <!-- Button -->
+    <button id="viewCalendar">📅 View Calendar</button>
+
   </div>
-
-  <button id="viewCalendar">📅 View Calendar</button>
-
 </div>
 
 <script>
 $(document).ready(function(){
 
-  // Highlight when checkbox is clicked
   $(".check").click(function(){
     $(this).closest(".item").toggleClass("highlight");
   });
 
-  // Button click
   $("#viewCalendar").click(function(){
     alert("Opening Calendar...");
   });
