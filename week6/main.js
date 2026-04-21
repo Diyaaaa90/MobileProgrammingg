@@ -71,6 +71,8 @@ function firebaseDeleteUser(id) {
     .catch(console.error);
 }
 
+    
+
 // Make functions global so script.js can access them
 window.firebaseCreateUser = firebaseCreateUser;
 window.firebaseReadUser = firebaseReadUser;
